@@ -1,0 +1,45 @@
+{
+  "roles": {
+    "ankle": {
+      "title": "TOBILLO",
+      "subtitle": "PATADA",
+      "alt": "Concepto de montaje: {brand} {productName} sobre una correa elástica justo encima del tobillo, con calcetín negro y zapatilla deportiva",
+      "description": "Registra el movimiento de la pierna durante las patadas."
+    },
+    "wrist": {
+      "title": "MUÑECA",
+      "subtitle": "GOLPE",
+      "alt": "Concepto de montaje: {brand} {productName} en una correa compacta en el antebrazo, junto a la muñeca y detrás del puño vendado",
+      "description": "Lleva el mismo sensor a los movimientos de golpe del tren superior."
+    },
+    "paddle": {
+      "title": "PALETA",
+      "subtitle": "OBJETIVO",
+      "alt": "Concepto de montaje: {brand} {productName} sujeto alrededor del mango de una paleta, lejos de la superficie de golpeo",
+      "description": "Usa {productName} en el objetivo de la acción."
+    },
+    "shield": {
+      "title": "ESCUDO",
+      "subtitle": "IMPACTO",
+      "alt": "Concepto de montaje: {brand} {productName} sujeto a las correas traseras de un escudo de pateo, fuera de la zona de impacto",
+      "description": "Añade medición al equipo sin cambiar la forma de golpear."
+    },
+    "body": {
+      "title": "CUERPO",
+      "subtitle": "MOVIMIENTO",
+      "alt": "Concepto de montaje: {brand} {productName} sujeto al costado de la cintura del atleta mediante un clip, no al pecho",
+      "description": "Coloca el sensor en el cuerpo para explorar otros contextos de movimiento."
+    }
+  },
+  "uses": {
+    "reaction": "Reacción",
+    "execution": "Ejecución",
+    "recovery": "Recuperación",
+    "stimulus": "Estímulo",
+    "impactDetection": "Detección de impacto",
+    "responseTiming": "Tiempo de respuesta",
+    "timing": "Tiempo",
+    "consistency": "Consistencia",
+    "movement": "Movimiento"
+  }
+}

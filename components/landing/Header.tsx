@@ -1,6 +1,5 @@
 'use client';
 
-import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { Arrow } from '@/components/ui/Arrow';
 import { Wordmark } from '@/components/ui/Wordmark';
@@ -46,20 +45,20 @@ export function Header({ lang, nav, join, menuOpen, menuClose, topLabel }: Heade
             </a>
           ))}
           <div className="mobile-nav-extra">
-            <Link href={lang === 'en' ? '/es' : '/en'} onClick={() => setIsOpen(false)}>
+            <a href={lang === 'en' ? '/es' : '/en'} onClick={() => setIsOpen(false)}>
               {lang === 'en' ? 'ESPAÑOL' : 'ENGLISH'}
-            </Link>
+            </a>
           </div>
         </nav>
         <div className="nav-actions">
           <div className="lang-switch" aria-label={lang === 'es' ? 'Idioma' : 'Language'}>
-            <Link href="/en" aria-current={lang === 'en' ? 'page' : undefined}>
-              EN
-            </Link>
-            <span>/</span>
-            <Link href="/es" aria-current={lang === 'es' ? 'page' : undefined}>
+            <a href="/es" aria-current={lang === 'es' ? 'page' : undefined}>
               ES
-            </Link>
+            </a>
+            <span>/</span>
+            <a href="/en" aria-current={lang === 'en' ? 'page' : undefined}>
+              EN
+            </a>
           </div>
           <a className="nav-cta" href="#waitlist">
             {join} <Arrow diagonal />

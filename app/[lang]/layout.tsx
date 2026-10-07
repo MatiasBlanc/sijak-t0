@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Cal_Sans, JetBrains_Mono } from 'next/font/google';
 import localFont from 'next/font/local';
 import { notFound } from 'next/navigation';
+import { product } from '@/lib/product';
 import '../globals.css';
 
 const display = Cal_Sans({
@@ -48,8 +49,11 @@ const mono = JetBrains_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://sijak-t0.vercel.app'),
-  title: { default: 'SIJAK T0 — Everyone starts here.', template: '%s | SIJAK T0' },
-  icons: { icon: '/icon.svg' },
+  title: {
+    default: `${product.brand} ${product.name} — ${product.tagline}`,
+    template: `%s | ${product.brand} ${product.name}`,
+  },
+  icons: { icon: '/sijak-icon.svg' },
 };
 
 export function generateStaticParams() {

@@ -1,12 +1,21 @@
 import Image from 'next/image';
+import { media } from '@/lib/media';
 
 interface DeviceImageProps {
   className?: string;
 }
 
-/** Ilustración decorativa del sensor. El SVG se sirve tal cual para no pasar por el optimizador. */
+/** Render decorativo del sensor compartido entre todos los sistemas. */
 export function DeviceImage({ className }: DeviceImageProps) {
   return (
-    <Image src="/device.svg" alt="" width={520} height={350} className={className} unoptimized />
+    <Image
+      src={media.product}
+      alt=""
+      width={1200}
+      height={1200}
+      sizes="(max-width: 680px) 40vw, 20vw"
+      className={className}
+      loading="lazy"
+    />
   );
 }

@@ -7,7 +7,7 @@ Landing independiente de la aplicación Expo del directorio padre. Next.js 16, T
 - Inglés: https://sijak-t0.vercel.app/en
 - Español: https://sijak-t0.vercel.app/es
 - Vercel: https://vercel.com/agencia-ai/sijak-t0
-- `/` redirige a `/en`.
+- `/` redirige a `/es`, el idioma principal.
 
 ## Desarrollo
 
@@ -37,18 +37,20 @@ Las pruebas de navegador requieren `npx playwright install chromium`. Las prueba
 
 - `app/[lang]/`: páginas estáticas bilingües, contacto, privacidad y metadatos.
 - `components/ui/`: botones, listas, campos y avisos reutilizables.
-- `components/landing/`: secciones de la landing. Solo cabecera, montajes y formulario van al cliente.
+- `components/landing/`: secciones de la landing. Solo cabecera, montajes y formulario van al cliente. `MultiRoleSection` va después de entrenadores; sus cinco pestañas admiten teclado.
 - `components/LandingPage.tsx`: compone esas secciones en el servidor.
 - `components/ContactForm.tsx`: consultas y solicitudes de privacidad.
-- `lib/copy.ts`: contenido de ambas versiones.
+- `lib/copy.ts`: contenido heredado de ambas versiones; las traducciones nuevas se separan en `locales/{en,es}/{landing,product}.json` y se interpolan en `lib/i18n.ts`. `common.json` y `waitlist.json` quedan reservados para la migración incremental del resto del contenido.
+- `lib/product.ts`, `lib/roles.ts`, `lib/media.ts`: identidad, capacidades, montajes y rutas a recursos independientes de los idiomas.
 - `lib/waitlist.ts`: validación y normalización de inscripciones.
 - `lib/request.ts`: comprobación de origen, tipo de contenido, honeypot y límite de 8 KB.
 - `app/api/waitlist/route.ts`: persistencia privada e idempotencia por hash SHA-256 del correo.
 - `app/api/contact/route.ts`: persistencia privada de mensajes.
-- `app/globals.css`: identidad visual y breakpoints móviles.
-- `public/device.svg`: ilustración vectorial conceptual original; no es una representación de un diseño industrial final aprobado.
+- `app/globals.css`: estilos heredados de las secciones existentes (todavía ~2.765 líneas); la nueva sección usa Tailwind sin CSS propio. Queda pendiente migrar el resto por etapas para reducirlo.
+- `public/t0-render.png`: único render del dispositivo utilizado en hero, sistema y montajes ilustrados.
 - `public/images/pexels-260447.jpg`: imagen de entrenamiento de Pexels, https://www.pexels.com/photo/man-in-black-shirt-doing-a-kick-260447/. La página usa `next/image` para optimizarla.
-- `public/og-image.png`: tarjeta Open Graph; el SVG fuente está al lado.
+- `public/media/roles/*.webp`: cinco ilustraciones originales de montaje (20–40 KB) con el mismo `t0-render.png`, generadas con `scripts/generate-role-media.ts`. Se identifican como conceptos, **no** fotografías ni pruebas del hardware final; antes de publicar la campaña conviene sustituirlas por fotos/renders aprobados y cambiar `media.roleMediaKind` a `photography`.
+- `public/sijak-icon.svg`: favicon. `public/og-image.png`: captura del hero en español (1200 × 630).
 
 ## Inscripciones y contacto
 

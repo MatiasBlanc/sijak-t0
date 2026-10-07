@@ -25,8 +25,7 @@ const copy = {
       intelligence: 'PERFORMANCE INTELLIGENCE',
       early: 'EARLY ACCESS',
       concept: 'CONCEPT ILLUSTRATION',
-      heroAlt:
-        'Concept illustration of the SIJAK T0 sensor with rounded-square shell and central lime spark',
+      heroAlt: 'Render of the compact SIJAK product sensor with a central lime spark',
       sportsAlt: 'Athlete practicing a jumping strike in a combat sports gym',
       total: 'TOTAL RESPONSE',
       cycle: 'COMPLETE CYCLE',
@@ -166,8 +165,7 @@ const copy = {
       intelligence: 'INTELIGENCIA DE RENDIMIENTO',
       early: 'ACCESO ANTICIPADO',
       concept: 'ILUSTRACIÓN CONCEPTUAL',
-      heroAlt:
-        'Ilustración conceptual del sensor SIJAK T0 con carcasa cuadrada redondeada y chispa central lima',
+      heroAlt: 'Render del sensor compacto SIJAK con chispa central lima',
       sportsAlt: 'Atleta practicando un golpe en salto en un gimnasio de combate',
       total: 'RESPUESTA TOTAL',
       cycle: 'CICLO COMPLETO',

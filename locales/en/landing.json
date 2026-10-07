@@ -1,0 +1,13 @@
+{
+  "multiRole": {
+    "heading": ["ONE SENSOR.", "MULTIPLE ROLES."],
+    "lead": "Built to move with you.",
+    "body": "The same {productName} clicks into different mounts, adapting to your training instead of the other way around.",
+    "hardware": "MODULAR HARDWARE",
+    "caption": ["THE SAME {productName}.", "A DIFFERENT PERSPECTIVE."],
+    "tabsLabel": "Choose a mounting location",
+    "previewsLabel": "Explore the other mounts",
+    "illustration": "MOUNTING CONCEPT / ILLUSTRATION",
+    "imageError": "Mount image unavailable. Explore the mounting details below."
+  }
+}

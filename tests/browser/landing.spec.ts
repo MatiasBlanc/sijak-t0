@@ -8,7 +8,7 @@ for (const lang of ['en', 'es']) {
       await page.goto(`/${lang}`);
       await expect(page.locator('html')).toHaveAttribute('lang', lang);
       await expect(page.locator('h1')).toBeVisible();
-      expect(await page.locator('h2').count()).toBe(6);
+      expect(await page.locator('h2').count()).toBe(5);
       expect(
         await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth),
       ).toBe(true);
@@ -32,15 +32,63 @@ for (const lang of ['en', 'es']) {
   });
 }
 
-test('cambia el montaje sin reemplazar el sensor', async ({ page }) => {
+test('los montajes muestran el sensor en su soporte y comparten la misma pieza', async ({
+  page,
+}) => {
   await page.goto('/en');
-  const paddle = page.getByRole('button', { name: /PADDLE/ });
-  await paddle.click();
-  await expect(paddle).toHaveAttribute('aria-pressed', 'true');
-  await expect(page.locator('.concept-stage-main')).toHaveAttribute('data-mount', '2');
-  await expect(page.locator('.concept-device')).toHaveAttribute('src', '/device.svg');
-  await page.getByRole('button', { name: /BODY/ }).click();
-  await expect(page.locator('.concept-stage-main')).toHaveAttribute('data-mount', '4');
+  const tabs = page.getByRole('tab');
+  await expect(tabs.first()).toHaveAttribute('aria-selected', 'true');
+  await expect(page.getByRole('tabpanel').locator('img')).toHaveAttribute('src', /ankle.webp/);
+  await tabs.first().focus();
+  await page.keyboard.press('ArrowRight');
+  await expect(tabs.nth(1)).toHaveAttribute('aria-selected', 'true');
+  await expect(tabs.nth(1)).toBeFocused();
+  await expect(page.getByRole('tabpanel').locator('img')).toHaveAttribute('src', /wrist.webp/);
+  await page.keyboard.press('End');
+  await expect(tabs.last()).toHaveAttribute('aria-selected', 'true');
+  await page.keyboard.press('Home');
+  await expect(tabs.first()).toHaveAttribute('aria-selected', 'true');
+  await page.getByRole('button', { name: /03 \/ PADDLE/ }).click();
+  await expect(tabs.nth(2)).toHaveAttribute('aria-selected', 'true');
+  await expect(page.getByRole('tabpanel').locator('img')).toHaveAttribute(
+    'alt',
+    /handle.*away from the striking surface/,
+  );
+  await expect(page.getByRole('tabpanel').locator('img')).toHaveAttribute('src', /paddle.webp/);
+  await tabs.nth(3).click();
+  await expect(page.getByRole('tabpanel').locator('img')).toHaveAttribute('alt', /rear webbing/);
+  await tabs.nth(4).click();
+  await expect(page.getByRole('tabpanel').locator('img')).toHaveAttribute('alt', /waistband/);
+});
+
+test('en móvil solo aparece una imagen principal y las pestañas son desplazables', async ({
+  page,
+}) => {
+  await page.setViewportSize({ width: 320, height: 800 });
+  await page.goto('/es');
+  await expect(
+    page.getByRole('heading', { name: /UN SENSOR[\s\S]*MÚLTIPLES ROLES/ }),
+  ).toBeVisible();
+  await expect(page.getByRole('tabpanel').locator('img')).toHaveCount(1);
+  await expect(page.getByRole('tab')).toHaveCount(5);
+  await page.getByRole('tab', { name: /PALETA/ }).click();
+  await expect(page.getByRole('tabpanel').locator('img')).toHaveAttribute('alt', /mango/);
+  await expect(page.getByRole('tabpanel')).toContainText('EL MISMO T0. OTRA PERSPECTIVA.');
+});
+
+test('español es la entrada principal y cambiar de idioma vuelve al inicio', async ({ page }) => {
+  await page.goto('/');
+  await expect(page).toHaveURL(/\/es$/);
+  await page.evaluate(() => window.scrollTo(0, document.body.scrollHeight));
+  await expect.poll(() => page.evaluate(() => window.scrollY)).toBeGreaterThan(1000);
+  await page.locator('.lang-switch a[href="/en"]').click();
+  await expect(page).toHaveURL(/\/en$/);
+  await expect.poll(() => page.evaluate(() => window.scrollY)).toBe(0);
+  await page.evaluate(() => window.scrollTo(0, document.body.scrollHeight));
+  await expect.poll(() => page.evaluate(() => window.scrollY)).toBeGreaterThan(1000);
+  await page.locator('.lang-switch a[href="/es"]').click();
+  await expect(page).toHaveURL(/\/es$/);
+  await expect.poll(() => page.evaluate(() => window.scrollY)).toBe(0);
 });
 
 test('navegación móvil, idioma y cabecera compacta', async ({ page }) => {

@@ -1,0 +1,45 @@
+{
+  "roles": {
+    "ankle": {
+      "title": "ANKLE",
+      "subtitle": "KICK",
+      "alt": "Mounting concept: {brand} {productName} secured on an elastic strap just above the ankle, over a black sock and athletic shoe",
+      "description": "Track lower-leg movement during kicking actions."
+    },
+    "wrist": {
+      "title": "WRIST",
+      "subtitle": "PUNCH",
+      "alt": "Mounting concept: {brand} {productName} secured on a compact lower-forearm strap behind a wrapped fist",
+      "description": "Bring the same sensor to upper-body striking movements."
+    },
+    "paddle": {
+      "title": "PADDLE",
+      "subtitle": "TARGET",
+      "alt": "Mounting concept: {brand} {productName} secured around the handle of a striking paddle, away from the striking surface",
+      "description": "Use {productName} as the target side of the action."
+    },
+    "shield": {
+      "title": "SHIELD",
+      "subtitle": "IMPACT",
+      "alt": "Mounting concept: {brand} {productName} attached to the rear webbing of a kick shield, outside the strike zone",
+      "description": "Instrument training equipment without changing how athletes strike it."
+    },
+    "body": {
+      "title": "BODY",
+      "subtitle": "MOVEMENT",
+      "alt": "Mounting concept: {brand} {productName} clipped to the side of an athlete's waistband, not the chest",
+      "description": "Move the sensor to the body for broader movement contexts."
+    }
+  },
+  "uses": {
+    "reaction": "Reaction",
+    "execution": "Execution",
+    "recovery": "Recovery",
+    "stimulus": "Stimulus",
+    "impactDetection": "Impact detection",
+    "responseTiming": "Response timing",
+    "timing": "Timing",
+    "consistency": "Consistency",
+    "movement": "Movement"
+  }
+}

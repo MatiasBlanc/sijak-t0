@@ -1,8 +1,9 @@
 import Image from 'next/image';
 import { Button } from '@/components/ui';
 import type { Copy } from '@/lib/copy';
+import { media } from '@/lib/media';
 
-/** Primer pantallazo. El SVG del producto tiene prioridad de carga. */
+/** Primer pantallazo. El render aprobado del producto tiene prioridad de carga. */
 export function Hero({ copy }: { copy: Copy }) {
   return (
     <section className="hero" id="top">
@@ -24,13 +25,13 @@ export function Hero({ copy }: { copy: Copy }) {
         <div className="hero-visual" role="img" aria-label={copy.tech.heroAlt}>
           <div className="hero-visual-grid" />
           <Image
-            src="/t0-hero.svg"
+            src={media.product}
             alt=""
-            width={680}
-            height={630}
+            width={1200}
+            height={1200}
             className="hero-product-render"
             priority
-            unoptimized
+            sizes="(max-width: 680px) 100vw, 50vw"
           />
         </div>
       </div>

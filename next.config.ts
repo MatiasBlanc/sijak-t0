@@ -4,7 +4,7 @@ const config: NextConfig = {
   turbopack: { root: process.cwd() },
   outputFileTracingRoot: process.cwd(),
   async redirects() {
-    return [{ source: '/', destination: '/en', permanent: true }];
+    return [{ source: '/', destination: '/es', permanent: false }];
   },
   async headers() {
     return [

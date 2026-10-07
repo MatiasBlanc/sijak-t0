@@ -1,0 +1,13 @@
+{
+  "multiRole": {
+    "heading": ["UN SENSOR.", "MÚLTIPLES ROLES."],
+    "lead": "Diseñado para moverse contigo.",
+    "body": "El mismo {productName} encaja en distintos soportes y se adapta a tu entrenamiento, no al revés.",
+    "hardware": "HARDWARE MODULAR",
+    "caption": ["EL MISMO {productName}.", "OTRA PERSPECTIVA."],
+    "tabsLabel": "Elige dónde colocar el sensor",
+    "previewsLabel": "Explora los otros soportes",
+    "illustration": "CONCEPTO DE MONTAJE / ILUSTRACIÓN",
+    "imageError": "Imagen del montaje no disponible. Revisa los detalles a continuación."
+  }
+}

@@ -1,13 +1,13 @@
 import { Coaches } from '@/components/landing/Coaches';
-import { Concept } from '@/components/landing/Concept';
+import { MultiRoleSection } from '@/components/landing/MultiRoleSection';
 import { Footer } from '@/components/landing/Footer';
 import { Header } from '@/components/landing/Header';
 import { Hero } from '@/components/landing/Hero';
 import { HowItWorks } from '@/components/landing/HowItWorks';
-import { IndustrialDesign } from '@/components/landing/IndustrialDesign';
 import { System } from '@/components/landing/System';
 import { Waitlist } from '@/components/landing/Waitlist';
 import type { Copy, Lang } from '@/lib/copy';
+import { getMultiRoleContent } from '@/lib/role-copy';
 
 /** Compone la landing. El HTML estático no arrastra el JavaScript de las islas interactivas. */
 export default function LandingPage({ lang, copy }: { lang: Lang; copy: Copy }) {
@@ -23,19 +23,10 @@ export default function LandingPage({ lang, copy }: { lang: Lang; copy: Copy }) 
       />
       <main id="main">
         <Hero copy={copy} />
-        <Concept
-          title={copy.conceptTitle}
-          modular={copy.tech.modular}
-          core={copy.tech.core}
-          same={copy.tech.same}
-          mountsLabel={copy.tech.mounts}
-          sensorLabel={copy.sensorLabel}
-          mounts={copy.mounts}
-        />
-        <IndustrialDesign lang={lang} />
         <HowItWorks copy={copy} />
         <System copy={copy} />
         <Coaches lang={lang} copy={copy} />
+        <MultiRoleSection lang={lang} {...getMultiRoleContent(lang)} />
         <Waitlist
           lang={lang}
           copy={{

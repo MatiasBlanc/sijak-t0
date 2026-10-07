@@ -9,7 +9,7 @@ export function System({ copy }: { copy: Copy }) {
     { name: 'T0 TEAM 4', count: 4, desc: copy.team },
   ];
   return (
-    <section className="section system-section">
+    <section id="t0" className="section system-section">
       <div className="container">
         <SectionHeading title={copy.systemTitle} />
         <div className="system-grid">
