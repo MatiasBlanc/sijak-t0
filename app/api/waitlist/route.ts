@@ -1,6 +1,6 @@
 import { createHash } from 'node:crypto';
 import { BlobNotFoundError, head, put } from '@vercel/blob';
-import { validateWaitlist } from '@/lib/waitlist';
+import { parseWaitlist } from '@/lib/waitlist';
 import { readFormRequest } from '@/lib/request';
 
 export const runtime = 'nodejs';
@@ -15,9 +15,14 @@ export const maxDuration = 15;
 export async function POST(request: Request): Promise<Response> {
   const result = await readFormRequest(request);
   if (result.error) return result.error;
-  const entry = validateWaitlist(result.data);
-  if (!entry)
-    return Response.json({ error: 'Revisa los datos y el consentimiento.' }, { status: 400 });
+  const parsed = parseWaitlist(result.data);
+  if (!parsed.ok) {
+    return Response.json(
+      { error: 'Revisa los datos y el consentimiento.', fields: parsed.fields },
+      { status: 400 },
+    );
+  }
+  const entry = parsed.entry;
   const id = createHash('sha256').update(entry.email).digest('hex');
   try {
     let exists = false;

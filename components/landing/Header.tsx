@@ -2,7 +2,8 @@
 
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
-import { Arrow, Wordmark } from '@/components/ui';
+import { Arrow } from '@/components/ui/Arrow';
+import { Wordmark } from '@/components/ui/Wordmark';
 import type { Lang } from '@/lib/copy';
 
 const anchors = ['#t0', '#how-it-works', '#coaches', '#waitlist'];

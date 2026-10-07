@@ -8,6 +8,7 @@ interface ButtonProps {
   href?: string;
   variant?: 'lime' | 'text';
   diagonal?: boolean;
+  showArrow?: boolean;
   className?: string;
   type?: 'button' | 'submit' | 'reset';
   disabled?: boolean;
@@ -24,6 +25,7 @@ export function Button({
   href,
   variant = 'lime',
   diagonal,
+  showArrow = true,
   className,
   type = 'button',
   disabled,
@@ -36,7 +38,7 @@ export function Button({
   const content = (
     <>
       {children}
-      <Arrow diagonal={diagonal ?? !isText} />
+      {showArrow ? <Arrow diagonal={diagonal ?? !isText} /> : null}
     </>
   );
   if (href && external) {

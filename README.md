@@ -36,7 +36,9 @@ Las pruebas de navegador requieren `npx playwright install chromium`. Las prueba
 ## Arquitectura
 
 - `app/[lang]/`: páginas estáticas bilingües, contacto, privacidad y metadatos.
-- `components/LandingPage.tsx`: navegación, hero, montajes interactivos, línea de tiempo, métricas, deportes, sistemas, entrenadores, inscripción y footer.
+- `components/ui/`: botones, listas, campos y avisos reutilizables.
+- `components/landing/`: secciones de la landing. Solo cabecera, montajes y formulario van al cliente.
+- `components/LandingPage.tsx`: compone esas secciones en el servidor.
 - `components/ContactForm.tsx`: consultas y solicitudes de privacidad.
 - `lib/copy.ts`: contenido de ambas versiones.
 - `lib/waitlist.ts`: validación y normalización de inscripciones.

@@ -1,5 +1,26 @@
 @import 'tailwindcss';
 
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .reveal {
+      animation: reveal-rise 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+      animation-timeline: view();
+      animation-range: entry 0% cover 22%;
+    }
+  }
+}
+
+@keyframes reveal-rise {
+  from {
+    opacity: 0.7;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
 @theme {
   --color-lime: #c6ff00;
   --color-ink: #0e0f10;
@@ -12,8 +33,9 @@
   --text: #f7f7f2;
   --muted: #8b9096;
   --line: #ffffff18;
-  --mono: var(--font-mono), monospace;
-  --display: var(--font-display), Arial, sans-serif;
+  --mono: var(--font-mono), 'JetBrains Mono', monospace;
+  --display: var(--font-display), 'Cal Sans', sans-serif;
+  --body: var(--font-body), 'Satoshi', sans-serif;
 }
 * {
   box-sizing: border-box;
@@ -23,12 +45,13 @@ html {
   scroll-padding-top: 100px;
 }
 body {
-  --mono: var(--font-mono), monospace;
-  --display: var(--font-display), Arial, sans-serif;
+  --mono: var(--font-mono), 'JetBrains Mono', monospace;
+  --display: var(--font-display), 'Cal Sans', sans-serif;
+  --body: var(--font-body), 'Satoshi', sans-serif;
   margin: 0;
   background: var(--background);
   color: var(--text);
-  font-family: var(--font-body), Arial, sans-serif;
+  font-family: var(--body);
   -webkit-font-smoothing: antialiased;
 }
 a {
@@ -73,7 +96,10 @@ p {
 }
 h1,
 h2,
-h3 {
+h3,
+h4,
+h5,
+h6 {
   font-family: var(--display);
   font-weight: 400;
 }
@@ -124,10 +150,11 @@ h3 {
   justify-content: space-between;
   gap: 32px;
   padding: 0 25px;
-  font: 11px var(--mono);
-  font-weight: 600;
+  font-family: var(--body);
+  font-size: 13px;
+  font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.04em;
   border: 1px solid transparent;
 }
 .button-lime {
@@ -139,9 +166,11 @@ h3 {
   transform: translateY(-2px);
 }
 .text-link {
-  font: 10px var(--mono);
+  font-family: var(--body);
+  font-size: 12px;
+  font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.01em;
+  letter-spacing: 0.03em;
   display: inline-flex;
   gap: 18px;
   align-items: center;
@@ -258,6 +287,7 @@ h3 {
   height: 74px;
 }
 .wordmark {
+  font-family: var(--display);
   font-size: 38px;
   letter-spacing: -2.5px;
   font-weight: 850;
@@ -305,9 +335,11 @@ h3 {
   align-items: center;
   background: var(--lime);
   color: #0e0f10;
-  font: 11px var(--mono);
-  font-weight: 600;
+  font-family: var(--body);
+  font-size: 12px;
+  font-weight: 700;
   text-transform: uppercase;
+  letter-spacing: 0.04em;
   padding: 14px 22px;
 }
 .nav-cta:hover {
@@ -1287,7 +1319,9 @@ h3 {
   background: rgba(255, 255, 255, 0.02);
   border: 1px solid var(--line);
   border-left: 2px solid var(--lime);
-  transition: background 0.2s, border-color 0.2s;
+  transition:
+    background 0.2s,
+    border-color 0.2s;
 }
 .coaches-pillar:hover {
   background: rgba(198, 255, 0, 0.03);
@@ -1317,7 +1351,9 @@ h3 {
 .comparison {
   background: #111416;
   border: 1px solid rgba(198, 255, 0, 0.28);
-  box-shadow: 0 25px 70px rgba(0, 0, 0, 0.7), inset 0 0 30px rgba(0, 0, 0, 0.5);
+  box-shadow:
+    0 25px 70px rgba(0, 0, 0, 0.7),
+    inset 0 0 30px rgba(0, 0, 0, 0.5);
   padding: 28px;
   position: relative;
 }
@@ -1437,7 +1473,9 @@ h3 {
   padding: 22px;
   background: linear-gradient(135deg, rgba(198, 255, 0, 0.12) 0%, rgba(198, 255, 0, 0.02) 100%);
   border: 1px solid rgba(198, 255, 0, 0.5);
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5), inset 0 0 20px rgba(198, 255, 0, 0.05);
+  box-shadow:
+    0 8px 30px rgba(0, 0, 0, 0.5),
+    inset 0 0 20px rgba(198, 255, 0, 0.05);
   margin-top: 24px;
   position: relative;
 }
@@ -1695,12 +1733,99 @@ h3 {
   line-height: 1.7;
   margin-top: 17px;
 }
+.form-error,
+.form-alert {
+  color: #fff4f4;
+}
+.form-alert {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  column-gap: 12px;
+  row-gap: 6px;
+  margin-top: 20px;
+  padding: 16px;
+  background: #3a1414;
+  border: 1px solid #ff5c5c;
+  box-shadow: 0 0 0 1px #ff5c5c33;
+  scroll-margin-top: 96px;
+}
+.form-alert:focus {
+  outline: 2px solid #ffb4b4;
+  outline-offset: 3px;
+}
+.form-alert-mark {
+  grid-row: 1 / span 2;
+  width: 32px;
+  height: 32px;
+  display: grid;
+  place-items: center;
+  border: 1px solid #ff5c5c;
+  color: #ffd0d0;
+  font: 18px var(--mono);
+}
+.form-alert-title {
+  margin: 0;
+  font: 11px var(--mono);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #ffb4b4;
+}
+.form-alert ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 4px;
+  font-size: 15px;
+  line-height: 1.45;
+}
+.form-alert li::before {
+  content: '• ';
+  color: #ff8a8a;
+}
+.field-error {
+  display: block;
+  margin-top: 8px;
+  color: #ffb4b4;
+  font:
+    13px/1.4 var(--font-body),
+    sans-serif;
+  letter-spacing: 0;
+  text-transform: none;
+}
+.form-fields label.field-invalid input:not([type='radio']),
+.form-fields label.field-invalid select,
+.contact-form label.field-invalid textarea,
+.form-fields fieldset.field-invalid,
+.consent-block.field-invalid {
+  border-color: #ff5c5c;
+}
+.form-fields label.field-invalid input:not([type='radio']),
+.form-fields label.field-invalid select,
+.contact-form label.field-invalid textarea {
+  background: #ff4d4d14;
+  box-shadow: inset 3px 0 0 #ff5c5c;
+}
+.form-fields fieldset.field-invalid {
+  border: 1px solid #ff5c5c;
+  padding: 10px;
+  background: #ff4d4d10;
+}
+.consent-block.field-invalid {
+  margin-top: 18px;
+  padding: 10px;
+  border: 1px solid #ff5c5c;
+  background: #ff4d4d10;
+}
+.consent-block.field-invalid .consent-label {
+  margin-top: 0;
+}
 .form-error {
-  font-size: 12px;
-  line-height: 1.6;
-  color: #f7f7f2;
-  border-left: 2px solid var(--lime);
-  padding-left: 10px;
+  font-size: 15px;
+  line-height: 1.5;
+  border: 1px solid #ff5c5c;
+  background: #3a1414;
+  padding: 14px 16px;
   margin-top: 17px;
 }
 .honeypot {
@@ -1747,6 +1872,7 @@ h3 {
   padding-bottom: 45px;
 }
 .footer-logo {
+  font-family: var(--display);
   font-size: 49px;
   font-weight: 850;
   line-height: 1;

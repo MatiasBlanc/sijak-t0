@@ -103,7 +103,8 @@ export function Coaches({ lang, copy }: { lang: Lang; copy: Copy }) {
                 </>
               ) : (
                 <>
-                  Recovery is <span className="insight-highlight">24% slower</span> on the left side.
+                  Recovery is <span className="insight-highlight">24% slower</span> on the left
+                  side.
                 </>
               )}
             </p>

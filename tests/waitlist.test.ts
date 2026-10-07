@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { validateWaitlist } from '../lib/waitlist';
+import { parseWaitlist, validateWaitlist } from '../lib/waitlist';
 
 const valid = {
   name: 'Test Athlete',
@@ -44,6 +44,18 @@ test('rechaza correos inválidos, valores fuera del contrato y controles', () =>
   assert.equal(validateWaitlist({ ...valid, name: 'a\nname' }), null);
   assert.equal(validateWaitlist({ ...valid, name: 'a'.repeat(101) }), null);
   assert.equal(validateWaitlist({ ...valid, consent: false }), null);
+});
+
+test('informa los campos que impiden guardar la inscripción', () => {
+  const result = parseWaitlist({
+    ...valid,
+    email: 'no-es-correo',
+    consent: false,
+    athleteCount: '3.5',
+  });
+  assert.equal(result.ok, false);
+  if (result.ok) return;
+  assert.deepEqual(result.fields, ['email', 'consent', 'athleteCount']);
 });
 
 test('valida el número opcional de atletas sin coerciones arbitrarias', () => {

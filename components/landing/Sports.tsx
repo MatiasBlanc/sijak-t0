@@ -23,7 +23,7 @@ export function Sports({ copy }: { copy: Copy }) {
           items={copy.sports}
           className="sports-list"
           itemClassName="sports-item"
-          trailing={<span className="sports-plus">+</span>}
+          trailing={() => <span className="sports-plus">+</span>}
         />
       </div>
     </section>

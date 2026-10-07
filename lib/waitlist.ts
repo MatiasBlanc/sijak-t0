@@ -11,18 +11,10 @@ export interface WaitlistEntry {
 }
 
 export type WaitlistField =
-  | 'name'
-  | 'email'
-  | 'country'
-  | 'sport'
-  | 'role'
-  | 'lang'
-  | 'consent'
-  | 'athleteCount';
+  'name' | 'email' | 'country' | 'sport' | 'role' | 'lang' | 'consent' | 'athleteCount';
 
 export type WaitlistParseResult =
-  | { ok: true; entry: WaitlistEntry }
-  | { ok: false; fields: WaitlistField[] };
+  { ok: true; entry: WaitlistEntry } | { ok: false; fields: WaitlistField[] };
 
 const SPORTS = ['taekwon-do', 'boxing', 'kickboxing', 'muay-thai', 'karate', 'mma'] as const;
 const ROLES = ['athlete', 'coach', 'club'] as const;
@@ -60,7 +52,12 @@ export function parseWaitlist(value: unknown): WaitlistParseResult {
   if (value.consent !== 'on') fields.push('consent');
   const athleteCount = readAthleteCount(value.athleteCount);
   if (athleteCount === 'invalid') fields.push('athleteCount');
-  if (fields.length > 0 || athleteCount === 'invalid' || !isSport(value.sport) || !isRole(value.role)) {
+  if (
+    fields.length > 0 ||
+    athleteCount === 'invalid' ||
+    !isSport(value.sport) ||
+    !isRole(value.role)
+  ) {
     return { ok: false, fields };
   }
   if (value.lang !== 'en' && value.lang !== 'es') return { ok: false, fields: ['lang'] };

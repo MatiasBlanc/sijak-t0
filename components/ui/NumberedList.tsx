@@ -6,7 +6,7 @@ interface NumberedListProps {
   className?: string;
   itemClassName?: string;
   indexClassName?: string;
-  trailing?: ReactNode;
+  trailing?: (item: string, index: number) => ReactNode;
 }
 
 /** Lista numerada 01… usada por bloques repetidos de la landing. */
@@ -23,7 +23,7 @@ export function NumberedList({
         <div key={item} className={itemClassName}>
           <IndexMark index={index} className={indexClassName} />
           <strong>{item}</strong>
-          {trailing}
+          {trailing?.(item, index)}
         </div>
       ))}
     </div>

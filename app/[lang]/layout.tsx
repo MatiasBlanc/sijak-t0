@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
-import { Cal_Sans, Manrope, JetBrains_Mono } from 'next/font/google';
+import { Cal_Sans, JetBrains_Mono } from 'next/font/google';
+import localFont from 'next/font/local';
 import { notFound } from 'next/navigation';
 import '../globals.css';
 
@@ -10,8 +11,40 @@ const display = Cal_Sans({
   display: 'swap',
   adjustFontFallback: false,
 });
-const body = Manrope({ subsets: ['latin'], variable: '--font-body', display: 'swap' });
-const mono = JetBrains_Mono({ subsets: ['latin'], variable: '--font-mono', display: 'swap' });
+
+const satoshi = localFont({
+  src: [
+    {
+      path: '../../public/fonts/satoshi/Satoshi-Regular.woff2',
+      weight: '400',
+      style: 'normal',
+    },
+    {
+      path: '../../public/fonts/satoshi/Satoshi-Medium.woff2',
+      weight: '500',
+      style: 'normal',
+    },
+    {
+      path: '../../public/fonts/satoshi/Satoshi-Bold.woff2',
+      weight: '700',
+      style: 'normal',
+    },
+    {
+      path: '../../public/fonts/satoshi/Satoshi-Black.woff2',
+      weight: '900',
+      style: 'normal',
+    },
+  ],
+  variable: '--font-body',
+  display: 'swap',
+});
+
+const mono = JetBrains_Mono({
+  subsets: ['latin'],
+  variable: '--font-mono',
+  display: 'swap',
+  preload: false,
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://sijak-t0.vercel.app'),
@@ -34,7 +67,7 @@ export default async function RootLayout({
   if (lang !== 'en' && lang !== 'es') notFound();
   return (
     <html lang={lang}>
-      <body className={`${display.variable} ${body.variable} ${mono.variable}`}>
+      <body className={`${display.variable} ${satoshi.variable} ${mono.variable}`}>
         <a href="#main" className="skip-link">
           {lang === 'es' ? 'Ir al contenido' : 'Skip to content'}
         </a>

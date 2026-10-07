@@ -13,12 +13,7 @@ interface DetailListProps {
 }
 
 /** Lista numerada con título y texto, para pilares u otros bloques explicativos. */
-export function DetailList({
-  items,
-  className,
-  itemClassName,
-  indexClassName,
-}: DetailListProps) {
+export function DetailList({ items, className, itemClassName, indexClassName }: DetailListProps) {
   return (
     <div className={className}>
       {items.map((item, index) => (

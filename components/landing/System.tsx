@@ -14,7 +14,10 @@ export function System({ copy }: { copy: Copy }) {
         <SectionHeading title={copy.systemTitle} />
         <div className="system-grid">
           {tiers.map((tier, index) => (
-            <article key={tier.name} className={`system-tier reveal ${index === 1 ? 'featured' : ''}`}>
+            <article
+              key={tier.name}
+              className={`system-tier reveal ${index === 1 ? 'featured' : ''}`}
+            >
               <div className="tier-top">
                 <span>
                   <IndexMark index={index} /> / {copy.tech.system}

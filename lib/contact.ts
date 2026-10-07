@@ -7,8 +7,7 @@ export interface ContactEntry {
 export type ContactField = 'email' | 'message' | 'consent' | 'lang';
 
 export type ContactParseResult =
-  | { ok: true; entry: ContactEntry }
-  | { ok: false; fields: ContactField[] };
+  { ok: true; entry: ContactEntry } | { ok: false; fields: ContactField[] };
 
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 

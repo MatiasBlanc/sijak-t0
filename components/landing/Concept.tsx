@@ -1,20 +1,39 @@
 'use client';
 
 import { useState } from 'react';
-import { DeviceImage, IndexMark, SectionHeading } from '@/components/ui';
-import type { Copy } from '@/lib/copy';
+import { DeviceImage } from '@/components/ui/DeviceImage';
+import { IndexMark } from '@/components/ui/IndexMark';
+import { SectionHeading } from '@/components/ui/SectionHeading';
+
+interface ConceptProps {
+  title: string;
+  modular: string;
+  core: string;
+  same: string;
+  mountsLabel: string;
+  sensorLabel: string;
+  mounts: readonly (readonly [string, string])[];
+}
 
 /** Selector de montajes. El sensor no se vuelve a descargar al cambiar de rol. */
-export function Concept({ copy }: { copy: Copy }) {
+export function Concept({
+  title,
+  modular,
+  core,
+  same,
+  mountsLabel,
+  sensorLabel,
+  mounts,
+}: ConceptProps) {
   const [selected, setSelected] = useState(0);
   return (
     <section id="t0" className="section concept-section">
       <div className="container">
-        <SectionHeading title={copy.conceptTitle} />
+        <SectionHeading title={title} />
         <div className="concept-stage reveal">
           <div className="concept-stage-top">
             <span>SIJAK / T0</span>
-            <span>{copy.tech.modular} — 01</span>
+            <span>{modular} — 01</span>
           </div>
           <div className="concept-stage-main" data-mount={selected}>
             <div className="mount-accessory" aria-hidden="true">
@@ -28,23 +47,23 @@ export function Concept({ copy }: { copy: Copy }) {
             <div className="mount-ghost">{String(selected + 1).padStart(2, '0')}</div>
             <DeviceImage className="concept-device" />
             <div className="stage-spec stage-spec-left">
-              01 / {copy.tech.core}
+              01 / {core}
               <br />
-              {copy.tech.same}
+              {same}
             </div>
             <div className="stage-spec stage-spec-right">
-              {copy.mounts[selected][0]}
-              <br />↳ {copy.mounts[selected][1]}
+              {mounts[selected][0]}
+              <br />↳ {mounts[selected][1]}
             </div>
           </div>
           <div className="concept-stage-bottom">
             <span className="lime-dot" />
-            {copy.sensorLabel}
+            {sensorLabel}
             <span className="stage-cross">+</span>
           </div>
         </div>
-        <div className="mount-list" role="group" aria-label={copy.tech.mounts}>
-          {copy.mounts.map(([mount, action], index) => (
+        <div className="mount-list" role="group" aria-label={mountsLabel}>
+          {mounts.map(([mount, action], index) => (
             <button
               key={mount}
               type="button"

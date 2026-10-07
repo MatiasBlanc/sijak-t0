@@ -31,7 +31,10 @@ export async function postForm(
       cache: 'no-store',
     });
     if (response.ok) return { ok: true };
-    return { ok: false, failure: { status: response.status, fields: await readErrorFields(response) } };
+    return {
+      ok: false,
+      failure: { status: response.status, fields: await readErrorFields(response) },
+    };
   } catch {
     return { ok: false, failure: { status: 0, fields: [] } };
   }
