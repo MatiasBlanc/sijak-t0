@@ -5,7 +5,6 @@ import { Header } from '@/components/landing/Header';
 import { Hero } from '@/components/landing/Hero';
 import { HowItWorks } from '@/components/landing/HowItWorks';
 import { IndustrialDesign } from '@/components/landing/IndustrialDesign';
-import { Sports } from '@/components/landing/Sports';
 import { System } from '@/components/landing/System';
 import { Waitlist } from '@/components/landing/Waitlist';
 import type { Copy, Lang } from '@/lib/copy';
@@ -35,7 +34,6 @@ export default function LandingPage({ lang, copy }: { lang: Lang; copy: Copy }) 
         />
         <IndustrialDesign lang={lang} />
         <HowItWorks copy={copy} />
-        <Sports copy={copy} />
         <System copy={copy} />
         <Coaches lang={lang} copy={copy} />
         <Waitlist

@@ -8,7 +8,7 @@ for (const lang of ['en', 'es']) {
       await page.goto(`/${lang}`);
       await expect(page.locator('html')).toHaveAttribute('lang', lang);
       await expect(page.locator('h1')).toBeVisible();
-      expect(await page.locator('h2').count()).toBe(7);
+      expect(await page.locator('h2').count()).toBe(6);
       expect(
         await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth),
       ).toBe(true);
