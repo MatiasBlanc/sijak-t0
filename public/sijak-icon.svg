@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" role="img" aria-labelledby="title">
+  <title id="title">SIJAK spark icon</title>
+  <path d="M100 18 C104 52 118 76 151 100 C118 124 104 148 100 182 C96 148 82 124 49 100 C82 76 96 52 100 18Z"
+        fill="none" stroke="#C6FF00" stroke-width="8" stroke-linejoin="round"/>
+  <path d="M100 42 C104 66 114 84 136 100 C114 116 104 134 100 158 C96 134 86 116 64 100 C86 84 96 66 100 42Z"
+        fill="none" stroke="#C6FF00" stroke-width="5" stroke-linejoin="round"/>
+</svg>

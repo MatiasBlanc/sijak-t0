@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 220" role="img" aria-labelledby="title desc">
+  <title id="title">SIJAK logo</title>
+  <desc id="desc">SIJAK wordmark with four-point signal spark icon.</desc>
+
+  <!-- Transparent background -->
+  <g id="spark" transform="translate(22 10)">
+    <path d="M100 18
+             C104 52 118 76 151 100
+             C118 124 104 148 100 182
+             C96 148 82 124 49 100
+             C82 76 96 52 100 18Z"
+          fill="none" stroke="#C6FF00" stroke-width="8" stroke-linejoin="round"/>
+    <path d="M100 42
+             C104 66 114 84 136 100
+             C114 116 104 134 100 158
+             C96 134 86 116 64 100
+             C86 84 96 66 100 42Z"
+          fill="none" stroke="#C6FF00" stroke-width="5" stroke-linejoin="round"/>
+  </g>
+
+  <!-- Custom vector wordmark. No font dependency. -->
+  <g id="wordmark" transform="translate(210 55)" fill="none" stroke="#F7F7F2" stroke-width="15" stroke-linecap="square" stroke-linejoin="miter">
+    <!-- S -->
+    <path d="M82 8 H25 C10 8 5 17 5 27 C5 38 12 45 26 45 H61 C76 45 84 53 84 65 C84 78 76 86 61 86 H5"/>
+    <!-- I -->
+    <path d="M122 8 V86"/>
+    <!-- J -->
+    <path d="M205 8 V63 C205 79 195 88 179 88 H164 C149 88 141 80 141 67"/>
+    <!-- A -->
+    <path d="M245 86 L281 8 L317 86 M260 56 H302"/>
+    <!-- K -->
+    <path d="M355 8 V86 M355 54 L408 8 M373 38 L414 86"/>
+  </g>
+</svg>

@@ -1,0 +1,8 @@
+next-env.d.ts
+package-lock.json
+.next/
+.vercel/
+node_modules/
+.env*
+public/
+test-results/
