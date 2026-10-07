@@ -1,8 +1,15 @@
 import type { NextConfig } from 'next';
+import path from 'path';
+
+const monorepoRoot = path.resolve(__dirname, '..');
+
 const config: NextConfig = {
   poweredByHeader: false,
-  turbopack: { root: process.cwd() },
-  outputFileTracingRoot: process.cwd(),
+  images: {
+    formats: ['image/avif', 'image/webp'],
+  },
+  turbopack: { root: monorepoRoot },
+  outputFileTracingRoot: monorepoRoot,
   async redirects() {
     return [{ source: '/', destination: '/es', permanent: false }];
   },

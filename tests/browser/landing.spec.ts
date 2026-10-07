@@ -8,7 +8,7 @@ for (const lang of ['en', 'es']) {
       await page.goto(`/${lang}`);
       await expect(page.locator('html')).toHaveAttribute('lang', lang);
       await expect(page.locator('h1')).toBeVisible();
-      expect(await page.locator('h2').count()).toBe(5);
+      expect(await page.locator('h2').count()).toBe(6);
       expect(
         await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth),
       ).toBe(true);
@@ -81,12 +81,12 @@ test('español es la entrada principal y cambiar de idioma vuelve al inicio', as
   await expect(page).toHaveURL(/\/es$/);
   await page.evaluate(() => window.scrollTo(0, document.body.scrollHeight));
   await expect.poll(() => page.evaluate(() => window.scrollY)).toBeGreaterThan(1000);
-  await page.locator('.lang-switch a[href="/en"]').click();
+  await page.getByRole('link', { name: 'EN', exact: true }).click();
   await expect(page).toHaveURL(/\/en$/);
   await expect.poll(() => page.evaluate(() => window.scrollY)).toBe(0);
   await page.evaluate(() => window.scrollTo(0, document.body.scrollHeight));
   await expect.poll(() => page.evaluate(() => window.scrollY)).toBeGreaterThan(1000);
-  await page.locator('.lang-switch a[href="/es"]').click();
+  await page.getByRole('link', { name: 'ES', exact: true }).click();
   await expect(page).toHaveURL(/\/es$/);
   await expect.poll(() => page.evaluate(() => window.scrollY)).toBe(0);
 });
@@ -101,7 +101,7 @@ test('navegación móvil, idioma y cabecera compacta', async ({ page }) => {
   await page.getByRole('button', { name: 'Abrir menú' }).click();
   await page.getByRole('navigation').getByRole('link', { name: 'Para entrenadores' }).click();
   await expect(page.getByRole('navigation')).not.toBeVisible();
-  await expect(page.locator('header')).toHaveClass(/compact/);
+  await expect(page.locator('header')).toHaveAttribute('data-compact', 'true');
 });
 
 test('valida y confirma la inscripción solo después de respuesta del servidor', async ({

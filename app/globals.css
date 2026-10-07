@@ -68,11 +68,6 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
 button,
 input,
 select {
@@ -166,11 +161,6 @@ h3 {
   background: var(--lime);
   border-radius: 50%;
   box-shadow: 0 0 10px #c6ff0030;
-}
-
-.arrow {
-  font-size: 21px;
-  line-height: 1;
 }
 
 .button {
@@ -277,99 +267,6 @@ h3 {
 
 .section-heading {
   margin-bottom: 48px;
-}
-
-.site-header {
-  position: fixed;
-  inset: 0 0 auto;
-  z-index: 50;
-  background: #0e0f10f2;
-  border-bottom: 1px solid var(--line);
-  transition: background 0.3s;
-}
-
-.nav-shell {
-  height: 104px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  transition: height 0.3s;
-}
-
-.compact .nav-shell {
-  height: 74px;
-}
-
-.wordmark {
-  font-family: var(--display);
-  font-size: 38px;
-  letter-spacing: -2.5px;
-  font-weight: 850;
-  line-height: 1;
-  display: inline-flex;
-  gap: 10px;
-  align-items: center;
-}
-
-.wordmark-mark {
-  color: var(--lime);
-  font-size: 30px;
-  font-weight: 400;
-  transform: rotate(15deg);
-}
-
-.nav-links {
-  display: flex;
-  align-items: center;
-  gap: 36px;
-}
-
-.nav-links > a {
-  color: #c6c7c5;
-  letter-spacing: 0.02em;
-}
-
-.nav-links > a:hover {
-  color: var(--lime);
-}
-
-.nav-actions {
-  display: flex;
-  gap: 30px;
-  align-items: center;
-}
-
-.lang-switch {
-  display: flex;
-  gap: 8px;
-  font: 12px var(--mono);
-  color: var(--muted);
-}
-
-.lang-switch a[aria-current] {
-  color: var(--text);
-}
-
-.nav-cta {
-  display: flex;
-  gap: 20px;
-  align-items: center;
-  background: var(--lime);
-  color: #0e0f10;
-  font-family: var(--body);
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-  padding: 14px 22px;
-}
-
-.nav-cta:hover {
-  background: #d5ff4b;
-}
-
-.menu-button,
-.mobile-nav-extra {
-  display: none;
 }
 
 .hero {
@@ -1742,16 +1639,8 @@ h3 {
   font-size: 15px;
 }
 
-.nav-links > a {
-  font-size: 12px;
-}
-
 .form-fields input:not([type='radio']) {
   font-size: 14px;
-}
-
-.nav-cta {
-  font-size: 11px;
 }
 
 .hero-actions .text-link {
@@ -1816,14 +1705,6 @@ h3 {
 @media (max-width: 1150px) {
   .container {
     width: calc(100% - 72px);
-  }
-
-  .nav-links {
-    gap: 24px;
-  }
-
-  .nav-actions {
-    gap: 18px;
   }
 
   .hero-grid {
@@ -1904,32 +1785,6 @@ h3 {
 @media (max-width: 850px) {
   .container {
     width: calc(100% - 48px);
-  }
-
-  .nav-links {
-    gap: 20px;
-  }
-
-  .nav-links > a {
-    font-size: 10px;
-  }
-
-  .nav-actions {
-    gap: 15px;
-  }
-
-  .nav-cta {
-    padding: 11px 12px;
-    gap: 12px;
-    font-size: 9px;
-  }
-
-  .wordmark {
-    font-size: 28px;
-  }
-
-  .lang-switch {
-    font-size: 9px;
   }
 
   .hero-visual {
@@ -2073,87 +1928,6 @@ h3 {
     padding: 70px 0;
   }
 
-  .nav-shell {
-    height: 84px;
-  }
-
-  .compact .nav-shell {
-    height: 68px;
-  }
-
-  .nav-actions {
-    gap: 18px;
-  }
-
-  .nav-actions .lang-switch {
-    display: none;
-  }
-
-  .nav-cta {
-    padding: 12px 14px;
-    gap: 15px;
-  }
-
-  .nav-cta .arrow {
-    font-size: 17px;
-  }
-
-  .wordmark {
-    font-size: 32px;
-  }
-
-  .wordmark-mark {
-    font-size: 26px;
-  }
-
-  .menu-button {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-    border: 0;
-    background: transparent;
-    padding: 8px 0;
-    width: 22px;
-  }
-
-  .menu-button span {
-    height: 1px;
-    width: 22px;
-    background: var(--text);
-  }
-
-  .nav-links {
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    right: 0;
-    background: #0e0f10;
-    border-bottom: 1px solid var(--line);
-    padding: 25px 20px;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0;
-  }
-
-  .nav-links.open {
-    display: flex;
-  }
-
-  .nav-links > a {
-    font-size: 15px;
-    width: 100%;
-    padding: 14px 0;
-    border-bottom: 1px solid var(--line);
-  }
-
-  .mobile-nav-extra {
-    display: block;
-    font: 10px var(--mono);
-    color: var(--lime);
-    padding-top: 22px;
-  }
-
   .hero {
     padding-top: 74px;
   }
@@ -2205,10 +1979,6 @@ h3 {
 
   .hero-actions .text-link {
     gap: 10px;
-  }
-
-  .hero-actions .text-link .arrow {
-    font-size: 17px;
   }
 
   .hero-visual {
@@ -2718,10 +2488,6 @@ h3 {
 
   .comparison-row strong {
     font-size: 8px;
-  }
-
-  .nav-cta {
-    font-size: 9px;
   }
 
   .form-fields label,
