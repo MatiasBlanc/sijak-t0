@@ -6,7 +6,7 @@ import { Button } from '@/components/ui/Button';
 import { ChoiceGroup } from '@/components/ui/ChoiceGroup';
 import { Field, fieldProps } from '@/components/ui/Field';
 import { FormAlert } from '@/components/ui/FormAlert';
-import { LimeDot } from '@/components/ui/LimeDot';
+import { Section, SectionHeader, TechnicalLabel } from '@/components/ui/LandingLayout';
 import { useFormNotice } from '@/components/ui/useFormNotice';
 import type { Copy, Lang } from '@/lib/copy';
 import { postForm } from '@/lib/form';
@@ -19,7 +19,6 @@ type WaitlistCopy = Pick<
   Copy,
   | 'waitTitle'
   | 'waitBody'
-  | 'footerTag'
   | 'name'
   | 'email'
   | 'country'
@@ -66,34 +65,26 @@ export function Waitlist({ lang, copy }: { lang: Lang; copy: WaitlistCopy }) {
   }
 
   return (
-    <section id="waitlist" className="waitlist-section">
-      <div className="container waitlist-layout">
-        <div className="waitlist-copy">
-          <h2>
-            <LimeDot />
-            {copy.waitTitle}
-          </h2>
-          <p>{copy.waitBody}</p>
-          <div className="waitlist-art" aria-hidden="true">
-            <span className="art-circle art-one" />
-            <span className="art-circle art-two" />
-            <span className="art-cross">✳</span>
-            <span className="art-caption">{copy.footerTag.toUpperCase()} / 2027</span>
-          </div>
+    <Section id="waitlist">
+      <div className="grid gap-10 lg:grid-cols-2 lg:gap-16">
+        <div>
+          <TechnicalLabel className="text-signal">SIJAK / T0</TechnicalLabel>
+          <SectionHeader className="mt-6 max-w-xl">
+            {copy.waitTitle.slice(0, -3)}<span className="text-signal">T0.</span>
+          </SectionHeader>
+          <p className="mt-6 max-w-md text-base leading-relaxed text-muted md:text-lg">{copy.waitBody}</p>
         </div>
-        <div className="form-panel">
+        <div className="min-w-0 self-start border border-border bg-surface p-6 lg:p-8">
           {notice.status === 'success' ? (
-            <div className="form-success" role="status">
-              <span className="success-icon">✓</span>
-              <p className="eyebrow">SIJAK / T0</p>
-              <h3>{copy.success}</h3>
-              <p>{copy.successBody}</p>
+            <div className="flex min-h-80 flex-col justify-center gap-4" role="status">
+              <span className="text-3xl text-signal" aria-hidden="true">✓</span>
+              <TechnicalLabel>SIJAK / T0</TechnicalLabel>
+              <h3 className="font-heading text-2xl md:text-3xl">{copy.success}</h3>
+              <p className="text-base text-muted">{copy.successBody}</p>
             </div>
           ) : (
             <form onSubmit={onSubmit} noValidate>
-              <div className="form-head">
-                <span>{copy.early} / T0</span>
-              </div>
+              <div className="border-b border-border pb-5"><TechnicalLabel>{copy.early} / T0</TechnicalLabel></div>
               <FormAlert
                 title={copy.errors.title}
                 messages={notice.messages}
@@ -162,20 +153,18 @@ export function Waitlist({ lang, copy }: { lang: Lang; copy: WaitlistCopy }) {
                       setRole(value);
                   }}
                 />
-                <Field
-                  label={copy.count}
-                  name="athleteCount"
-                  error={notice.fieldError('athleteCount')}
-                >
-                  <input
-                    {...fieldProps('athleteCount', notice.fieldError('athleteCount'))}
-                    type="number"
-                    min="0"
-                    max="100000"
-                    inputMode="numeric"
-                    placeholder="—"
-                  />
-                </Field>
+                {role !== 'athlete' && (
+                  <Field label={copy.count} name="athleteCount" error={notice.fieldError('athleteCount')}>
+                    <input
+                      {...fieldProps('athleteCount', notice.fieldError('athleteCount'))}
+                      type="number"
+                      min="0"
+                      max="100000"
+                      inputMode="numeric"
+                      placeholder="—"
+                    />
+                  </Field>
+                )}
                 <div className="honeypot" aria-hidden="true">
                   <label>
                     Website
@@ -217,6 +206,6 @@ export function Waitlist({ lang, copy }: { lang: Lang; copy: WaitlistCopy }) {
           )}
         </div>
       </div>
-    </section>
+    </Section>
   );
 }

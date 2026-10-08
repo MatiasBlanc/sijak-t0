@@ -36,8 +36,7 @@ const copy = {
     join: 'Join waitlist',
     coming: 'Coming 2027',
     heroTitle: "A FAST KICK ISN'T ONE NUMBER.",
-    heroBody:
-      'Reaction. Execution. Impact. Recovery. SIJAK turns a combat-sport action into a measurable timeline.',
+    heroBody: 'From stimulus to recovery. Measure what happens inside every action.',
     seeHow: 'See a measurement',
     heroNote: 'ONE ACTION. THE WHOLE STORY.',
     conceptEyebrow: '01 / THE HARDWARE',
@@ -73,10 +72,10 @@ const copy = {
     systemEyebrow: '05 / THE SYSTEM',
     systemTitle: 'START WITH ONE. BUILD YOUR SYSTEM.',
     systemBody: 'One sensor remains useful. Two unlock the complete athlete-to-target timeline.',
-    solo: 'For individual training',
-    duo: 'Athlete + target',
+    solo: 'Individual training.'
+    duo: 'Athlete + target.'
     duoExtra: 'Full action analysis',
-    team: 'For coaches and clubs',
+    team: 'Coaches and clubs.'
     sensors: 'sensors',
     sensor: 'sensor',
     early: 'Join early access',
@@ -89,7 +88,7 @@ const copy = {
     insightLabel: 'THE INSIGHT',
     waitEyebrow: 'YOUR NEXT ROUND STARTS HERE',
     waitTitle: 'BE ONE OF THE FIRST TO TRAIN WITH T0.',
-    waitBody: 'Join the waitlist for early access, pilot testing opportunities and launch pricing.',
+    waitBody: 'Early access, pilots and launch pricing.',
     name: 'Name',
     email: 'Email',
     country: 'Country',
@@ -177,8 +176,7 @@ const copy = {
     join: 'Unirme a la lista',
     coming: 'Llega en 2027',
     heroTitle: 'UNA PATADA RÁPIDA NO ES UN SOLO NÚMERO.',
-    heroBody:
-      'Reacción. Ejecución. Impacto. Recuperación. SIJAK convierte una acción de combate en una línea de tiempo medible.',
+    heroBody: 'Del estímulo a la recuperación. Mide lo que ocurre dentro de cada acción.',
     seeHow: 'Ver una medición',
     heroNote: 'UNA ACCIÓN. LA HISTORIA COMPLETA.',
     conceptEyebrow: '01 / EL HARDWARE',
@@ -215,10 +213,10 @@ const copy = {
     systemTitle: 'EMPIEZA CON UNO. CONSTRUYE TU SISTEMA.',
     systemBody:
       'Un sensor sigue siendo útil. Dos desbloquean la línea completa entre atleta y objetivo.',
-    solo: 'Para entrenamiento individual',
-    duo: 'Atleta + objetivo',
+    solo: 'Entrenamiento individual.'
+    duo: 'Atleta + objetivo.'
     duoExtra: 'Análisis completo de la acción',
-    team: 'Para entrenadores y clubes',
+    team: 'Entrenadores y clubes.'
     sensors: 'sensores',
     sensor: 'sensor',
     early: 'Solicitar acceso anticipado',
@@ -232,8 +230,7 @@ const copy = {
     insightLabel: 'EL HALLAZGO',
     waitEyebrow: 'TU PRÓXIMO ASALTO EMPIEZA AQUÍ',
     waitTitle: 'SÉ DE LOS PRIMEROS EN ENTRENAR CON T0.',
-    waitBody:
-      'Únete a la lista de espera para acceder antes, participar en pruebas piloto y conocer el precio de lanzamiento.',
+    waitBody: 'Acceso anticipado, pilotos y precio de lanzamiento.',
     name: 'Nombre',
     email: 'Correo electrónico',
     country: 'País',

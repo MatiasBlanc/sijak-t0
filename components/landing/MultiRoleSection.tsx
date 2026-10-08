@@ -11,6 +11,7 @@ import type { Lang } from '@/lib/copy';
 import { RoleHero } from './multi-role/RoleHero';
 import { RolePreviewRail } from './multi-role/RolePreviewRail';
 import { RoleTabs } from './multi-role/RoleTabs';
+import { Section, SectionHeader } from '@/components/ui/LandingLayout';
 
 interface MultiRoleSectionProps {
   lang: Lang;
@@ -89,23 +90,14 @@ export function MultiRoleSection({ lang, copy, roles }: MultiRoleSectionProps) {
   }
 
   return (
-    <section
-      id="roles"
-      ref={sectionRef}
-      aria-labelledby="roles-title"
-      className="bg-background py-20 text-foreground md:py-28 lg:py-32"
-    >
-      <div className="mx-auto w-full max-w-7xl px-5 sm:px-6 lg:px-8">
-        <div className="mb-10 grid gap-6 md:mb-14 md:grid-cols-2 md:items-end md:gap-12">
-          <h2 id="roles-title" className="font-heading text-4xl leading-tight md:text-6xl">
-            {copy.heading[0]}
-            <br />
-            {copy.heading[1]}
-          </h2>
-          <div className="max-w-sm md:ml-auto">
-            <p className="text-lg text-foreground">{copy.lead}</p>
-            <p className="mt-3 text-base leading-relaxed text-muted">{copy.body}</p>
-          </div>
+    <Section id="roles" sectionRef={sectionRef} labelledBy="roles-title">
+        <div className="mb-10 grid gap-6 md:grid-cols-2 md:items-end md:gap-12">
+          <SectionHeader id="roles-title">
+            {copy.heading[0]}<br />{copy.heading[1]}
+          </SectionHeader>
+          <p className="max-w-sm text-base leading-relaxed text-muted md:ml-auto md:text-lg">
+            {copy.lead}<br />{copy.body}
+          </p>
         </div>
         <div className="border border-border bg-surface">
           <div className="flex items-center justify-between gap-4 border-b border-border px-5 py-4 font-technical text-xs tracking-wide text-muted md:px-8">
@@ -121,15 +113,15 @@ export function MultiRoleSection({ lang, copy, roles }: MultiRoleSectionProps) {
                 role="tabpanel"
                 aria-labelledby={`role-tab-${role.id}`}
                 tabIndex={0}
-                className="outline-none"
+                className="relative outline-none"
               >
-                <AnimatePresence mode="wait" initial={false}>
+                <AnimatePresence initial={false}>
                   <motion.div
                     key={role.id}
-                    initial={{ opacity: 0, x: shouldReduceMotion ? 0 : 16 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    exit={{ opacity: 0, x: shouldReduceMotion ? 0 : -10 }}
-                    transition={{ duration: shouldReduceMotion ? 0.12 : 0.36 }}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0, position: 'absolute' }}
+                    transition={{ duration: shouldReduceMotion ? 0 : 0.2 }}
                   >
                     <RoleHero
                       role={role}
@@ -156,7 +148,6 @@ export function MultiRoleSection({ lang, copy, roles }: MultiRoleSectionProps) {
           onKeyDown={onTabKeyDown}
           tabRefs={tabRefs}
         />
-      </div>
-    </section>
+    </Section>
   );
 }

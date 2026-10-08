@@ -18,7 +18,8 @@ export function RoleHero({ role, copy, illustration }: RoleHeroProps) {
           alt={role.alt}
           fill
           sizes={ROLE_IMAGE_SIZES}
-          loading="lazy"
+          loading={role.id === 'ankle' ? 'eager' : 'lazy'}
+          fetchPriority={role.id === 'ankle' ? 'low' : undefined}
           className="object-cover"
           style={{ objectPosition: role.objectPosition }}
         />
@@ -29,25 +30,15 @@ export function RoleHero({ role, copy, illustration }: RoleHeroProps) {
         )}
       </div>
       <div className="relative flex flex-col justify-end gap-4 border-t border-border p-6 md:border-l md:border-t-0 md:p-8 lg:border-l-0 lg:border-t">
-        <span
-          aria-hidden="true"
-          className="absolute right-6 top-2 font-heading text-8xl text-muted lg:right-8"
-        >
-          {role.number}
-        </span>
         <span className="relative font-technical text-xs tracking-wide text-muted">
           {role.number} / {role.title}
         </span>
         <div className="relative">
-          <h3 className="font-heading text-4xl md:text-5xl">{role.title}</h3>
+          <h3 className="font-heading text-2xl md:text-3xl">{role.title}</h3>
           <p className="mt-1 font-technical text-xs tracking-wide text-signal">{role.subtitle}</p>
         </div>
-        <p className="relative max-w-md text-sm leading-relaxed text-muted">{role.description}</p>
+        <p className="relative max-w-md text-base leading-relaxed text-muted md:text-lg">{role.description}</p>
         <RoleMetrics metrics={role.metrics} />
-        <p className="relative mt-2 flex items-center gap-3 font-technical text-xs tracking-wide text-muted">
-          <span aria-hidden="true" className="size-2 shrink-0 bg-signal" />
-          {copy.caption[0]} {copy.caption[1]}
-        </p>
       </div>
     </div>
   );

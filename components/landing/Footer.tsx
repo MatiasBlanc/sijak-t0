@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { Wordmark } from '@/components/ui';
+import { PageContainer } from '@/components/ui/LandingLayout';
 import type { Copy, Lang } from '@/lib/copy';
 
 interface FooterLink {
@@ -18,14 +19,14 @@ export function Footer({ lang, copy }: { lang: Lang; copy: Copy }) {
     { href: `/${lang}/privacy`, label: `${copy.privacy} ↗` },
   ];
   return (
-    <footer className="footer">
-      <div className="container">
-        <div className="footer-main">
+    <footer className="border-t border-border py-10">
+      <PageContainer>
+        <div className="flex flex-wrap items-start justify-between gap-8 pb-10">
           <div>
-            <Wordmark href="#top" className="footer-logo" />
-            <p>{copy.footerTag}</p>
+            <Wordmark href="#top" />
+            <p className="mt-3 text-sm text-muted">{copy.footerTag}</p>
           </div>
-          <div className="footer-links">
+          <div className="flex flex-wrap gap-6 font-technical text-xs text-muted [&_a]:hover:text-foreground">
             {links.map((link) =>
               link.href ? (
                 link.external ? (
@@ -45,14 +46,14 @@ export function Footer({ lang, copy }: { lang: Lang; copy: Copy }) {
             )}
           </div>
         </div>
-        <div className="footer-bottom">
+        <div className="flex flex-wrap justify-between gap-4 border-t border-border pt-6 font-technical text-xs text-muted">
           <span>
             © {new Date().getFullYear()} SIJAK. {copy.designed}
           </span>
           <span>{copy.photo}</span>
           <a href="#top">{copy.tech.top.toUpperCase()} ↑</a>
         </div>
-      </div>
+      </PageContainer>
     </footer>
   );
 }

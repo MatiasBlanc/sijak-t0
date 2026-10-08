@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import { Arrow } from '@/components/ui/Arrow';
 import { cn } from '@/components/ui/cn';
 import { Wordmark } from '@/components/ui/Wordmark';
+import { PageContainer } from '@/components/ui/LandingLayout';
 import type { Lang } from '@/lib/copy';
 
 const anchors = ['#t0', '#how-it-works', '#coaches', '#waitlist'];
@@ -37,12 +38,7 @@ export function Header({ lang, nav, join, menuOpen, menuClose, topLabel }: Heade
       data-compact={isCompact}
       className="fixed inset-x-0 top-0 z-50 border-b border-border bg-background transition-colors duration-300"
     >
-      <div
-        className={cn(
-          'container flex items-center justify-between transition-[height] duration-300',
-          isCompact ? 'h-17 md:h-18' : 'h-21 md:h-26',
-        )}
-      >
+      <PageContainer className={cn('flex items-center justify-between transition-[height] duration-300', isCompact ? 'h-16 md:h-18' : 'h-20 md:h-24')}> 
         <Wordmark href="#top" label={`SIJAK — ${topLabel}`} />
         <nav
           id="primary-navigation"
@@ -57,7 +53,7 @@ export function Header({ lang, nav, join, menuOpen, menuClose, topLabel }: Heade
               key={label}
               href={anchors[index]}
               onClick={() => setIsOpen(false)}
-              className="border-b border-border py-3 text-sm text-foreground/80 transition-colors hover:text-signal md:border-0 md:py-0 md:text-xs"
+              className="border-b border-border py-3 text-sm text-foreground transition-colors hover:text-signal md:border-0 md:py-0 md:text-xs"
             >
               {label}
             </a>
@@ -107,7 +103,7 @@ export function Header({ lang, nav, join, menuOpen, menuClose, topLabel }: Heade
             <span className="h-px w-5 bg-foreground" />
           </button>
         </div>
-      </div>
+      </PageContainer>
     </header>
   );
 }

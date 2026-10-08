@@ -5,6 +5,7 @@ import { Header } from '@/components/landing/Header';
 import { Hero } from '@/components/landing/Hero';
 import { HowItWorks } from '@/components/landing/HowItWorks';
 import { ProblemSection } from '@/components/landing/ProblemSection';
+import { Progress } from '@/components/landing/Progress';
 import { System } from '@/components/landing/System';
 import { Waitlist } from '@/components/landing/Waitlist';
 import type { Copy, Lang } from '@/lib/copy';
@@ -26,15 +27,15 @@ export default function LandingPage({ lang, copy }: { lang: Lang; copy: Copy }) 
         <Hero copy={copy} />
         <ProblemSection lang={lang} />
         <HowItWorks copy={copy} />
-        <System copy={copy} />
+        <Progress lang={lang} />
         <Coaches lang={lang} />
         <MultiRoleSection lang={lang} {...getMultiRoleContent(lang)} />
+        <System copy={copy} />
         <Waitlist
           lang={lang}
           copy={{
             waitTitle: copy.waitTitle,
             waitBody: copy.waitBody,
-            footerTag: copy.footerTag,
             name: copy.name,
             email: copy.email,
             country: copy.country,
